@@ -1,0 +1,412 @@
+/*************** RESET *********************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* TYPOGRAPHY */
+
+h1 {
+  font-family: "Barlow Condensed";
+  font-size: 90px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  color: black;
+}
+
+h2 {
+  color: var(--White, #FFF7E2);
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  text-transform: uppercase;
+}
+
+h3 {
+  color: rgb(198, 198, 198);
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.34px;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  /* 136.364% */
+  letter-spacing: -0.44px;
+  color: #FFF7E2;
+}
+
+/* INTRO SHEET */
+
+.intro-sheet {
+  background-color: #FF3700;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.midnight-cowboy-logo {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.midnight-cowboy-logo img {
+  width: 700px;
+  height: auto;
+}
+
+/* ARTISTS SHEET */
+
+
+.artists-sheet {
+  background-color: #FFF7E2;
+}
+
+.artists-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.artist-display-font {
+  width: 106vw;
+  max-width: none;
+  margin-top: -80px;
+  display: block;
+}
+
+.flex-spacer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.artist-names {
+  width: 100%;
+  position: relative;
+}
+
+.artists-sheet img.vector-1 {
+  height: 61px;
+  width: 5px;
+}
+
+.artists-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.artists-row a {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.artists-row .vector-1 {
+  flex: 0 0 auto;
+  width: 5px;
+  height: 61px;
+}
+
+
+/* footer */
+#footer-section-services {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.footer-container {
+  width: 100%;
+  justify-content: space-between;
+
+}
+
+footer {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 35px;
+  width: 100%;
+}
+
+.footer-section {
+  flex: 1;
+  display: flex;
+}
+
+
+.artists-sheet .footer-logo path {
+  fill: #FF3700 !important;
+}
+
+.footer-logo {
+  width: 9vw;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin-right: 80px;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  padding: 10px;
+  text-align: end;
+  font-family: 'inter';
+  font-size: 1vw;
+  font-weight: 500
+}
+
+.artists-sheet .menu a {
+  color: #FF3700;
+}
+
+.menu a:visited {
+  text-transform: none;
+}
+
+.artists-sheet .menu a:hover {
+  color: #FF3700;
+  transition: color 0.5s;
+}
+
+/* ABOUT SHEET */
+
+.about-sheet {
+  background-color: black;
+
+}
+
+.about-sheet .menu a {
+  color: #FF3700;
+}
+
+.about-sheet .footer-logo path {
+  fill: #FF3700 !important;
+}
+
+.about-sheet .artists-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.about-paragraph {
+  width: 100%;
+
+}
+
+.about-display-font {
+  width: 102vw;
+  max-width: none;
+  margin-top: 0;
+  display: block;
+}
+
+.about-sheet p {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  color: #FFF7E2;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+
+/* SERVICES SHEET */
+
+.services-sheet {
+  background-color: #FF3700;
+
+}
+
+.services-sheet .menu a {
+  color: #FFF7E2;
+}
+
+.services-sheet .footer-logo path {
+  fill: #FFF7E2 !important;
+}
+
+.services-sheet .artists-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.services-display-font {
+  width: 102vw;
+  max-width: none;
+  margin-top: 0;
+  display: block;
+}
+
+.services-sheet p {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  color: #000000;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0 20px;
+
+}
+
+/* Artist 1 - Junkyard Drive */
+
+.scroll-strip {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 4vw;
+  padding: 4vh 4vw;
+  scroll-padding-left: 4vw;
+  overflow-x: auto;
+  height: auto;
+  min-height: 0;
+  box-sizing: border-box;
+
+}
+
+.scroll-frame {
+  flex: 0 0 calc(100vw - 8vw);
+  height: calc(100vh - 8vh);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
+  scroll-snap-align: start;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.junkyard-drive-sheet {
+  background-color: #141414;
+  overflow-y: hidden;
+
+}
+
+.junkyard-drive-sheet .artists-flex {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow-x: visible;
+  gap: 2vh;
+}
+
+
+
+.junkyard-drive-sheet .footer-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.junkyard-drive-sheet .menu a {
+  color: #FFF7E2;
+}
+
+.junkyard-drive-sheet .footer-logo path {
+  fill: #FFF7E2 !important;
+}
+
+.video-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-video {
+  transform-origin: center;
+  object-fit: cover;
+  width: auto;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+}
+
+.video-overlay {
+  position: absolute;
+  z-index: 2;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  width: 28%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  ;
+}
+
+.junkyard-drive-sheet h1 {
+  color: #FFF7E2;
+}
