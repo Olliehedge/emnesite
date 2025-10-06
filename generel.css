@@ -39,6 +39,16 @@ h3 {
   letter-spacing: -0.34px;
 }
 
+h4 {
+  color: #FFF7E2;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: -0.44px;
+}
+
 
 a {
   text-decoration: none;
