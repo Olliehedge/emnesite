@@ -50,12 +50,19 @@
     scrollbar-width: thin;
   }
 
+  .carousel_track {
+    row-gap: 0.25rem;
+  }
+
   .carousel_slide {
-    min-height: 82vh;
+    min-height: 40vh;
+    margin: 0;
   }
 
   .carousel_display svg {
-    transform: scale(0.75);
+    max-width: min(40vw, 9rem);
+    width: 100%;
+    height: auto;
   }
 
   .landing-sheet nav.menu,
