@@ -32,7 +32,7 @@ h2 {
 h3 {
   color: rgb(198, 198, 198);
   font-family: Inter;
-  font-size: 17px;
+  font-size: 25.5px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -47,6 +47,7 @@ h4 {
   font-weight: 400;
   line-height: 30px;
   letter-spacing: -0.44px;
+  margin-bottom: 1.75rem;
 }
 
 
@@ -55,10 +56,12 @@ h4 {
 .asset-button {
   padding: 0.75rem 1.5rem;
   background: #c00;
-  color: #fff;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 0px;
+  font-size: 2rem;
   cursor: pointer;
 }
 
@@ -70,11 +73,18 @@ h4 {
 
 a {
   text-decoration: none;
+
 }
+
+a:visited {
+  color: inherit;
+}
+
+
 
 p {
   font-family: Inter;
-  font-size: 22px;
+  font-size: 27px;
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
@@ -348,7 +358,10 @@ nav {
   flex: 1 1 auto;
   display: flex;
   gap: 4vw;
-  padding: 4vh 4vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
   scroll-padding-left: 4vw;
   overflow-x: auto;
   height: auto;
@@ -359,10 +372,9 @@ nav {
 
 .scroll-frame {
   flex: 0 0 calc(100vw - 8vw);
-  height: calc(100vh - 8vh);
+  height: calc(100vh - 13vh);
   background: rgb(0, 0, 0);
   border-radius: 40px;
-  scroll-snap-align: start;
   overflow: hidden;
   position: relative;
 }
@@ -439,37 +451,113 @@ nav {
 }
 
 
+
+/* ARTIST PAGE - ABOUT , BUTTONS, PARTNERS, SPOTIFY  */
+
+.wrapper_page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: stretch;
+  height: 100%;
+  padding: 2%;
+  gap: 7%;
+
+}
+
+.wrapper_about {
+  grid-column: span 2;
+}
+
+.wrapper_band_description h2 {
+  font-size: 60px;
+
+}
+
+.wrapper_band_description h3 {
+  font-size: 25.5px;
+  margin-top: 1.5rem;
+}
+
+.wrapper_band_description p {
+  font-size: 33px;
+  line-height: 1.6;
+}
+
+.wrapper_band_description p+p {
+  margin-top: 1.5rem;
+}
+
+
+.wrapper_asset {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-column-start: 3;
+}
+
+.wrapper_asset> :last-child {
+  margin-top: 60px;
+}
+
+.wrapper_button {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: start;
+  justify-self: flex-start;
+  gap: 50px;
+  margin-top: 68px;
+}
+
+.wrapper_partners {
+  display: grid;
+
+}
+
+#link_reach_out {
+  text-decoration: underline;
+}
+
+.spotify_wrapper {
+  display: grid;
+  align-self: start;
+  justify-self: flex-start;
+}
+
+
+
 /* ARTIST PAGE - SOCICAL MEDIA AND CONTACT */
+
+.scroll-strip> :last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Social media */
 
-.junkyard-drive-sheet p {
-  font-family: Inter;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
+
 
 .social-media-and-contact {
   position: relative;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  gap: 40rem;
   width: 100%;
-  height: 100%;
 
 }
 
 
 .social-media-container {
   position: relative;
-  height: auto;
-  width: clamp(280px, 80vw, 620px);
-  margin: 0 auto;
+  flex: 1 1 320px;
+  width: auto;
+  max-width: 620px;
+  margin: 0;
   overflow: hidden;
 }
+
+
 
 .social-media {
   position: relative;
@@ -495,35 +583,270 @@ nav {
   pointer-events: none;
 }
 
+/* .social-media-cover.bottom {
+  bottom: 0;
+  height: 126px;
+} */
+
 .social-media-cover.bottom {
   bottom: 0;
-  height: 150px;
+  height: 126px;
 }
+
+/* .social-media-cover.top {
+  top: 0;
+  height: 93px;
+} */
 
 .social-media-cover.top {
   top: 0;
-  height: 50px;
+  height: 32px;
 }
 
 /* contact and website */
+
+.junkyard-drive-sheet .scroll-strip>.scroll-frame:last-child p {
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.7;
+}
+
+/* .contact-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 320px;
+  max-width: 520px;
+  align-items: flex-start;
+  padding-top: 93px;
+  padding-bottom: 126px;
+  gap: 2rem;
+} */
+
+.contact-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 320px;
+  max-width: 520px;
+  align-items: stretch;
+  width: max-content;
+  padding-top: 32px;
+  padding-bottom: 126px;
+  gap: 2rem;
+
+}
+
+.contact-column> :last-child {
+  margin-top: auto;
+
+}
+
+.contact-column>* {
+  width: 100%;
+}
 
 .contact-website-container {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 0 auto;
-  max-width: 40%;
+  align-items: flex-start;
+  width: max-content;
+  margin: 0;
   gap: 3.75rem;
 }
+
 
 .contact {
   display: flex;
   position: relative;
   flex-direction: column;
+
 }
 
 .website {
   display: flex;
   position: relative;
   flex-direction: column;
+}
+
+
+.contact-content :last-child {
+  margin-left: 20px;
+}
+
+.contact> :not(:first-child) {
+  margin-bottom: 1rem;
+
+}
+
+/* Social media icons */
+
+.social-media-icons-container {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+
+.social-media-icons path {
+  fill: #FFF7E2 !important;
+}
+
+/* LANDING PAGE CAROUSEL */
+
+.landing-carousel {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.landing-carousel__title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FFF7E2;
+  text-align: center;
+  letter-spacing: 0.15rem;
+}
+
+.vertical-carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.carousel-viewport {
+  width: 100%;
+  max-width: 720px;
+  height: min(70vh, 720px);
+  overflow: hidden;
+  border-radius: 28px;
+  position: relative;
+  background: #000;
+}
+
+.carousel-track {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.carousel-slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.96);
+  filter: brightness(0.65);
+  transition: transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.carousel-slide.is-active {
+  transform: scale(1);
+  filter: brightness(1);
+}
+
+.carousel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-display {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  padding: 0.85rem 2.5rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #FFF7E2;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-display:hover {
+  background: rgba(255, 55, 0, 0.8);
+  transform: translateX(-50%) scale(1.04);
+}
+
+.carousel-control {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 247, 226, 0.55);
+  background: rgba(0, 0, 0, 0.4);
+  color: #FFF7E2;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 55, 0, 0.9);
+  border-color: rgba(255, 55, 0, 0.9);
+  transform: translateY(-2px);
+}
+
+.carousel-control:active {
+  transform: translateY(0);
+}
+
+.carousel-control:focus-visible {
+  outline: 2px solid #FF3700;
+  outline-offset: 3px;
+}
+
+.carousel-control--prev span {
+  transform: translateY(-2px);
+}
+
+.carousel-control--next span {
+  transform: translateY(2px);
+}
+
+@media (max-width: 768px) {
+  .landing-carousel {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .carousel-viewport {
+    border-radius: 20px;
+    height: 60vh;
+  }
+
+  .carousel-display {
+    bottom: 1.5rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .carousel-control {
+    width: 3rem;
+    height: 3rem;
+  }
 }
