@@ -28,38 +28,38 @@
 <body class="artists-sheet">
   <main class="artists-flex">
     <div class="artist-bg">
-      <video id="artist-bg-video" muted loop playsinline data-clip="artist-default"></video>
+      <video id="artist-bg-video" muted loop playsinline></video>
     </div>
     <img src="graphics/ARTISTS.svg" class="artist-display-font" alt="red artist display font">
     <div class="flex-spacer">
       <div class="artist-names">
         <div class="artists-row">
-          <a class="artist-link" href="junkyard-drive.html" data-video="videos/junkyard-drive (2).mp4" data-clip="junkyard-drive">
+          <a class="artist-link" href="junkyard-drive.html" data-video="videos/junkyard-drive (2).mp4">
             <h1 class="artist-entry">
               <span class="artist-entry__name">Junkyard Drive</span>
             </h1>
           </a>
           <img src="graphics/Vector-1.svg" class="vector-1" alt="black line">
-          <a class="artist-link" data-video="videos/mojo_pin.mp4" data-clip="mojo-pin">
+          <a class="artist-link" data-video="videos/mojo_pin.mp4">
             <h1 class="artist-entry">
               <span class="artist-entry__name">Mojo Pin</span>
             </h1>
           </a>
           <img src="graphics/Vector-1.svg" class="vector-1" alt="black line">
-          <a class="artist-link" data-video="videos/elba.mp4" data-clip="elba">
+          <a class="artist-link" data-video="videos/elba.mp4">
             <h1 class="artist-entry">
               <span class="artist-entry__name">Elba</span>
             </h1>
           </a>
         </div>
         <div class="artists-row">
-          <a class="artist-link" data-video="videos/tønner.mp4">
+          <a class="artist-link" data-video="videos/tønner">
             <h1 class="artist-entry">
               <span class="artist-entry__name">Tønner</span>
             </h1>
           </a>
           <img src="graphics/Vector-1.svg" class="vector-1" alt="black line">
-          <a class="artist-link" data-video="videos/courettes.mp4" data-clip="courettes">
+          <a class="artist-link" data-video="videos/courettes.mp4">
             <h1 class="artist-entry">
               <span class="artist-entry__name">The Courettes</span>
             </h1>
@@ -176,7 +176,7 @@
     const customCursor = document.querySelector('.custom-cursor');
     let activeLink = null;
 
-    const showVideo = (src, clipKey = 'artist-default') => {
+    const showVideo = (src) => {
       if (!src) {
         hideVideo();
         return;
@@ -188,7 +188,6 @@
         video.load();
       }
 
-      video.dataset.clip = clipKey;
       video.classList.add('is-visible');
       video.play().catch(() => { });
     };
@@ -196,8 +195,6 @@
     const hideVideo = () => {
       video.classList.remove('is-visible');
       video.pause();
-      activeVideoSrc = '';
-      video.dataset.clip = 'artist-default';
     };
 
     nameElements.forEach(nameEl => {
@@ -214,7 +211,7 @@
         activeLink = link;
         namesContainer.classList.add('is-dimmed');
         link.classList.add('is-active');
-        showVideo(src, link.dataset.clip);
+        showVideo(src);
         customCursor?.classList.add('custom-cursor--artist-hover');
       });
 
@@ -226,6 +223,7 @@
         namesContainer.classList.remove('is-dimmed');
         activeLink = null;
         if (src === activeVideoSrc) {
+          activeVideoSrc = '';
           hideVideo();
         }
         customCursor?.classList.remove('custom-cursor--artist-hover');
