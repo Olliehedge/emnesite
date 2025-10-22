@@ -18,33 +18,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MIDNIGHT COWBOY</title>
   <link rel="stylesheet" href="generel.css">
+  <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
+  <link rel="prefetch" href="videos/junkyard-drive%20(2).mp4" as="video">
+  <link rel="prefetch" href="videos/mojo_pin.mp4" as="video">
+  <link rel="prefetch" href="videos/elba.mp4" as="video">
+  <link rel="prefetch" href="videos/courettes.mp4" as="video">
 </head>
 
 <body class="artists-sheet">
   <main class="artists-flex">
+    <div class="artist-bg">
+      <video id="artist-bg-video" muted loop playsinline data-clip="artist-default"></video>
+    </div>
     <img src="graphics/ARTISTS.svg" class="artist-display-font" alt="red artist display font">
     <div class="flex-spacer">
       <div class="artist-names">
         <div class="artists-row">
-          <a href="junkyard-drive.html">
-            <h1>Junkyard Drive</h1>
+          <a class="artist-link" href="junkyard-drive.html" data-video="videos/junkyard-drive (2).mp4" data-clip="junkyard-drive">
+            <h1 class="artist-entry">
+              <span class="artist-entry__name">Junkyard Drive</span>
+            </h1>
           </a>
           <img src="graphics/Vector-1.svg" class="vector-1" alt="black line">
-          <a>
-            <h1>Mojo Pin</h1>
+          <a class="artist-link" data-video="videos/mojo_pin.mp4" data-clip="mojo-pin">
+            <h1 class="artist-entry">
+              <span class="artist-entry__name">Mojo Pin</span>
+            </h1>
           </a>
           <img src="graphics/Vector-1.svg" class="vector-1" alt="black line">
-          <a>
-            <h1>Elba</h1>
+          <a class="artist-link" data-video="videos/elba.mp4" data-clip="elba">
+            <h1 class="artist-entry">
+              <span class="artist-entry__name">Elba</span>
+            </h1>
           </a>
         </div>
         <div class="artists-row">
-          <a>
-            <h1>Tønner</h1>
+          <a class="artist-link" data-video="videos/tønner.mp4">
+            <h1 class="artist-entry">
+              <span class="artist-entry__name">Tønner</span>
+            </h1>
           </a>
           <img src="graphics/Vector-1.svg" class="vector-1" alt="black line">
-          <a>
-            <h1>The Courettes</h1>
+          <a class="artist-link" data-video="videos/courettes.mp4" data-clip="courettes">
+            <h1 class="artist-entry">
+              <span class="artist-entry__name">The Courettes</span>
+            </h1>
           </a>
         </div>
       </div>
@@ -64,7 +82,7 @@
           </ul>
         </nav>
         <div class="logo" class="footer-section">
-          <a href="/">
+          <a href="landing-page.html?skipIntro=1">
             <svg class="footer-logo" xmlns="http://www.w3.org/2000/svg" width="150" height="47" viewBox="0 0 150 47"
               fill="none">
               <path
@@ -127,7 +145,107 @@
     </div>
   </main>
 
+  <div class="custom-cursor custom-cursor--hidden">
+    <div class="custom-cursor__shape"></div>
+  </div>
+  <script src="custom-cursor.js"></script>
+  <script>
+    (() => {
+      const preloadVideos = [
+        "videos/junkyard-drive (2).mp4",
+        "videos/mojo_pin.mp4",
+        "videos/elba.mp4",
+        "videos/courettes.mp4"
+      ];
+      if (!("fetch" in window)) return;
+      preloadVideos.forEach((src) => {
+        try {
+          fetch(src, { cache: "force-cache" }).catch(() => { });
+        } catch (_) {
+          // Ignore best-effort prefetch failures.
+        }
+      });
+    })();
+  </script>
 
+  <script>
+    let activeVideoSrc = '';
+    const video = document.getElementById('artist-bg-video');
+    const namesContainer = document.querySelector('.artist-names');
+    const nameElements = document.querySelectorAll('.artist-entry__name');
+    const customCursor = document.querySelector('.custom-cursor');
+    let activeLink = null;
+
+    const showVideo = (src, clipKey = 'artist-default') => {
+      if (!src) {
+        hideVideo();
+        return;
+      }
+
+      if (src !== activeVideoSrc) {
+        activeVideoSrc = src;
+        video.src = src;
+        video.load();
+      }
+
+      video.dataset.clip = clipKey;
+      video.classList.add('is-visible');
+      video.play().catch(() => { });
+    };
+
+    const hideVideo = () => {
+      video.classList.remove('is-visible');
+      video.pause();
+      activeVideoSrc = '';
+      video.dataset.clip = 'artist-default';
+    };
+
+    nameElements.forEach(nameEl => {
+      const link = nameEl.closest('.artist-link');
+      if (!link) return;
+
+      nameEl.addEventListener('mouseenter', () => {
+        const src = link.dataset.video;
+
+        if (activeLink && activeLink !== link) {
+          activeLink.classList.remove('is-active');
+        }
+
+        activeLink = link;
+        namesContainer.classList.add('is-dimmed');
+        link.classList.add('is-active');
+        showVideo(src, link.dataset.clip);
+        customCursor?.classList.add('custom-cursor--artist-hover');
+      });
+
+      nameEl.addEventListener('mouseleave', () => {
+        const src = link.dataset.video;
+        if (activeLink !== link) return;
+
+        link.classList.remove('is-active');
+        namesContainer.classList.remove('is-dimmed');
+        activeLink = null;
+        if (src === activeVideoSrc) {
+          hideVideo();
+        }
+        customCursor?.classList.remove('custom-cursor--artist-hover');
+      });
+
+      nameEl.addEventListener('click', () => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        window.location.href = href;
+      });
+
+      nameEl.addEventListener('focus', () => {
+        customCursor?.classList.add('custom-cursor--artist-hover');
+      });
+
+      nameEl.addEventListener('blur', () => {
+        customCursor?.classList.remove('custom-cursor--artist-hover');
+      });
+    });
+  </script>
 </body>
 
 </html>

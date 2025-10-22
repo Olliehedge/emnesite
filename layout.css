@@ -1,0 +1,77 @@
+/* Layout-specific responsive overrides */
+
+/* Tablet adjustments (<= 1024px) */
+@media (max-width: 1024px) {
+  .landing_carousel {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    gap: 2rem;
+  }
+
+  .carousel_viewport {
+    height: 115vh;
+    top: -8rem;
+    border-radius: 28px;
+  }
+
+  .carousel_display svg {
+    transform: scale(0.85);
+  }
+
+  .landing-sheet .menu {
+    gap: 2rem;
+  }
+}
+
+/* Mobile adjustments (<= 768px) */
+@media (max-width: 768px) {
+  .landing-sheet {
+    height: auto;
+    overflow: visible;
+  }
+
+  .wrapper_landing_carousel {
+    padding: 0 1.25rem 3rem;
+    overflow: visible;
+  }
+
+  .landing_carousel {
+    padding-left: 0;
+    padding-right: 0;
+    gap: 1.5rem;
+    transform: none;
+  }
+
+  .carousel_viewport {
+    height: 90vh;
+    top: 0;
+    border-radius: 20px;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: thin;
+  }
+
+  .carousel_slide {
+    min-height: 82vh;
+  }
+
+  .carousel_display svg {
+    transform: scale(0.75);
+  }
+
+  .landing-sheet nav.menu,
+  .landing-sheet .menu {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .landing-sheet .menu li {
+    margin-right: 0;
+  }
+
+  .landing-sheet .footer-container footer {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}

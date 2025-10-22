@@ -18,6 +18,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MIDNIGHT COWBOY</title>
   <link rel="stylesheet" href="generel.css">
+  <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
+  <link rel="prefetch" href="videos/junkyard-drive%20(2).mp4" as="video">
+  <link rel="prefetch" href="videos/mojo_pin.mp4" as="video">
+  <link rel="prefetch" href="videos/elba.mp4" as="video">
+  <link rel="prefetch" href="videos/courettes.mp4" as="video">
 </head>
 
 <body class="about-sheet">
@@ -46,7 +51,7 @@
           </ul>
         </nav>
         <div class="logo" class="footer-section">
-          <a href="/">
+          <a href="landing-page.html?skipIntro=1">
             <svg class="footer-logo" xmlns="http://www.w3.org/2000/svg" width="150" height="47" viewBox="0 0 150 47"
               fill="none">
               <path
@@ -109,6 +114,28 @@
     </div>
   </main>
 
+  <div class="custom-cursor custom-cursor--hidden">
+    <div class="custom-cursor__shape"></div>
+  </div>
+  <script>
+    (() => {
+      const preloadVideos = [
+        "videos/junkyard-drive (2).mp4",
+        "videos/mojo_pin.mp4",
+        "videos/elba.mp4",
+        "videos/courettes.mp4"
+      ];
+      if (!("fetch" in window)) return;
+      preloadVideos.forEach((src) => {
+        try {
+          fetch(src, { cache: "force-cache" }).catch(() => { });
+        } catch (_) {
+          // Ignore fetch errors; this is just a warm-up.
+        }
+      });
+    })();
+  </script>
+  <script src="custom-cursor.js"></script>
 
 </body>
 
