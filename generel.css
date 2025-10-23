@@ -452,7 +452,7 @@ p {
   pointer-events: auto;
   color: #000000;
   transition: color 1.2s ease;
-  cursor: pointer;
+  cursor: none;
 }
 
 .artist-entry__name:hover {
