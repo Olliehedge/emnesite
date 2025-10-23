@@ -133,6 +133,20 @@ button {
   --cursor-rotation: 45deg;
 }
 
+@media (max-width: 1024px) {
+
+  body,
+  a,
+  button,
+  .artist-entry__name {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
 
 .artists-sheet .custom-cursor {
   position: fixed;
@@ -1170,6 +1184,7 @@ nav {
   transform: translate(-50%, -50%);
   opacity: 0;
   pointer-events: none;
+  z-index: 5;
   transition: opacity 1.2s ease;
 }
 

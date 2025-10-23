@@ -26,10 +26,8 @@
 
   originals.map(cloneSlide).forEach((clone) => track.appendChild(clone));
 
-  const displayTimers = new WeakMap();
   let lastScrollTop = viewport.scrollTop;
-  let lastScrollTime = performance.now();
-  let lastHoverTrigger = 0;
+  let activeDisplaySlide = null;
 
   let slideSpan = 0;
   let totalSpan = 0;
@@ -86,16 +84,43 @@
   const MIN_OPACITY = 0.65;
   const MAX_OPACITY = 1;
 
+  const setActiveDisplaySlide = (slide) => {
+    if (activeDisplaySlide === slide) return;
+
+    if (activeDisplaySlide) {
+      const previousDisplay =
+        activeDisplaySlide.querySelector(".carousel_display");
+      previousDisplay?.classList.remove("is-visible");
+    }
+
+    activeDisplaySlide = slide || null;
+    if (activeDisplaySlide) {
+      const nextDisplay =
+        activeDisplaySlide.querySelector(".carousel_display");
+      nextDisplay?.classList.add("is-visible");
+    }
+  };
+
   const updateVisualState = () => {
     const viewportRect = viewport.getBoundingClientRect();
-    const viewportCenter = viewportRect.top + viewportRect.height / 2;
-    const influenceRadius = viewportRect.height / 2 || 1;
+    const windowHeight = window.innerHeight || viewportRect.height || 1;
+    const windowCenter = windowHeight / 2;
+    const influenceRadius = windowHeight / 2 || 1;
+
+    let bestSlide = null;
+    let bestCoverage = -1;
+    let bestRatio = Number.POSITIVE_INFINITY;
 
     track.querySelectorAll(".carousel_slide").forEach((slide) => {
       const rect = slide.getBoundingClientRect();
       const slideCenter = rect.top + rect.height / 2;
-      const distance = Math.abs(viewportCenter - slideCenter);
+      const distance = Math.abs(windowCenter - slideCenter);
       const ratio = Math.min(distance / influenceRadius, 1);
+
+      const visibleTop = Math.max(rect.top, 0);
+      const visibleBottom = Math.min(rect.bottom, windowHeight);
+      const visibleHeight = Math.max(visibleBottom - visibleTop, 0);
+      const coverage = Math.min(visibleHeight / windowHeight, 1);
 
       const scale =
         MAX_SCALE - (MAX_SCALE - MIN_SCALE) * ratio;
@@ -105,49 +130,39 @@
       slide.style.setProperty("--scale", scale.toFixed(3));
       slide.style.setProperty("--opacity", opacity.toFixed(3));
 
+      if (
+        coverage > bestCoverage + 0.001 ||
+        (Math.abs(coverage - bestCoverage) < 0.001 && ratio < bestRatio)
+      ) {
+        bestCoverage = coverage;
+        bestRatio = ratio;
+        bestSlide = slide;
+      }
     });
+
+    setActiveDisplaySlide(bestSlide);
   };
 
   const clampScroll = () => {
     const span = baseSpan();
     if (!span) return false;
 
-    const current = viewport.scrollTop;
-    const lowerThreshold = span * 0.5;
-    const upperThreshold = span * 2.5;
+    const lowerLimit = span;
+    const upperLimit = span * 2;
 
-    if (current < lowerThreshold) {
+    const current = viewport.scrollTop;
+
+    if (current < lowerLimit) {
       viewport.scrollTop = current + span;
       return true;
     }
 
-    const scrollMax = viewport.scrollHeight - viewport.clientHeight;
-    const effectiveUpper = Math.min(upperThreshold, scrollMax - span * 0.5);
-
-    if (current > effectiveUpper) {
+    if (current >= upperLimit) {
       viewport.scrollTop = current - span;
       return true;
     }
 
     return false;
-  };
-
-  const showDisplayForSlide = (slide) => {
-    if (!slide) return;
-    const display = slide.querySelector(".carousel_display");
-    if (!display) return;
-
-    display.classList.add("is-visible");
-    if (displayTimers.has(display)) {
-      clearTimeout(displayTimers.get(display));
-    }
-
-    const timeout = setTimeout(() => {
-      display.classList.remove("is-visible");
-      displayTimers.delete(display);
-    }, 1500);
-
-    displayTimers.set(display, timeout);
   };
 
   const scheduleUpdate = () => requestAnimationFrame(updateVisualState);
@@ -159,20 +174,6 @@
     if (jumped) scheduleUpdate();
 
     lastScrollTop = viewport.scrollTop;
-    lastScrollTime = performance.now();
-  };
-
-  const HOVER_COOLDOWN = 400;
-
-  const handlePointerHover = (event) => {
-    const slide = event.target.closest(".carousel_slide");
-    if (!slide) return;
-
-    const now = performance.now();
-    if (now - lastHoverTrigger < HOVER_COOLDOWN) return;
-    lastHoverTrigger = now;
-
-    showDisplayForSlide(slide);
   };
 
   const handleResize = () => {
@@ -182,8 +183,6 @@
   };
 
   viewport.addEventListener("scroll", handleScroll, { passive: true });
-  viewport.addEventListener("pointermove", handlePointerHover, { passive: true });
-  viewport.addEventListener("pointerover", handlePointerHover, { passive: true });
   window.addEventListener("resize", handleResize);
 
   const init = () => {
@@ -192,8 +191,6 @@
     jumpToMiddle();
     updateVisualState();
     lastScrollTop = viewport.scrollTop;
-    lastScrollTime = performance.now();
-    lastHoverTrigger = performance.now();
   };
 
   if (document.readyState === "complete") {
