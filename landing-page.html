@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="generel.css">
   <link rel="stylesheet" href="layout.css">
   <link rel="icon" type="image/png" href="icons/favicon-32x32.png">
+  <link rel="preload" href="videos/junkyard-drive(2).mp4" as="video" type="video/mp4">
   <script>
     (function () {
       try {
@@ -56,7 +57,7 @@
 <body class="landing-sheet">
   <div class="landing-intro" data-landing-intro>
     <div class="landing-intro__logo">
-      <img src="graphics/MIDNIGHT COWBOY LOGO.svg" alt="midnight cowboy logo">
+      <img src="graphics/MIDNIGHT-COWBOY-LOGO.svg" alt="midnight cowboy logo">
     </div>
   </div>
   <header class="landing-header" data-landing-header>
@@ -116,7 +117,7 @@
   </header>
   <div class="landing-menu-overlay" data-landing-menu-overlay hidden></div>
   <aside class="landing-menu-drawer" id="landing-menu-drawer" data-landing-menu hidden>
-    <nav class="landing-menu-nav">
+    <nav>
       <ul class="landing-menu-nav__list">
         <li><a href="artists.html">Artists</a></li>
         <li><a href="about.html">About</a></li>
@@ -129,15 +130,15 @@
 
     <section class="wrapper_landing_carousel">
       <section class="landing_carousel">
-        <div class="vertical_carousel" data-carousel>
+        <div data-carousel>
 
           <div class="carousel_viewport" data-carousel-viewport>
 
             <div class="carousel_track" data-carousel-track>
 
               <article class="carousel_slide is_active carousel_slide--junkyard">
-                <video class="carousel_video" src="videos/junkyard-drive (2).mp4" loop autoplay muted
-                  playsinline></video>
+                <video class="carousel_video" data-clip="junkyard-drive" src="videos/junkyard-drive(2).mp4" loop
+                  autoplay muted playsinline></video>
                 <a class="carousel_display" href="junkyard-drive.html">
                   <svg xmlns="http://www.w3.org/2000/svg" width="426" height="515" viewBox="0 0 426 515" fill="none">
                     <path
@@ -182,9 +183,10 @@
                 </a>
               </article>
               <article class="carousel_slide is_active">
-                <video class="carousel_video" src="videos/courettes.mp4" loop autoplay muted playsinline></video>
-                <a class="carousel_display" href="junkyard-drive.html"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="504" height="362" viewBox="0 0 504 362" fill="none">
+                <video class="carousel_video" data-clip="courettes" src="videos/courettes.mp4" loop autoplay muted
+                  playsinline></video>
+                <a class="carousel_display" href="junkyard-drive.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="504" height="362" viewBox="0 0 504 362" fill="none">
                     <path
                       d="M479.259 361.75C458.609 361.75 454.759 351.95 454.759 328.85V273.55H469.459V291.4C469.459 306.1 469.809 309.6 479.259 309.6C488.709 309.6 488.709 305.05 488.709 291.4C488.709 247.3 454.759 230.5 454.759 186.4V146.15C454.759 122.7 458.609 113.25 479.259 113.25C499.559 113.25 503.409 122.7 503.409 146.15V200.05H488.709V184.65C488.709 169.95 488.709 165.4 479.259 165.4C469.809 165.4 469.459 171 469.459 184.65C469.459 228.75 503.409 242.05 503.409 289.65V328.85C503.409 351.95 499.909 361.75 479.259 361.75Z"
                       fill="#FF3700" style="fill:#FF3700;fill:color(display-p3 1.0000 0.2157 0.0000);fill-opacity:1;" />
@@ -218,12 +220,14 @@
                       fill="#FF3700" style="fill:#FF3700;fill:color(display-p3 1.0000 0.2157 0.0000);fill-opacity:1;" />
                     <path d="M229.52 90V19.472H221.712V0.400024L242.576 0.400024V19.472H234.768V90H229.52Z"
                       fill="#FF3700" style="fill:#FF3700;fill:color(display-p3 1.0000 0.2157 0.0000);fill-opacity:1;" />
-                  </svg></a>
+                  </svg>
+                </a>
               </article>
               <article class="carousel_slide is_active">
-                <video class="carousel_video" src="videos/mojo_pin.mp4" loop autoplay muted playsinline></video>
-                <a class="carousel_display" href="junkyard-drive.html"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="246" height="517" viewBox="0 0 246 517" fill="none">
+                <video class="carousel_video" data-clip="mojo-pin" src="videos/mojo_pin.mp4" loop autoplay muted
+                  playsinline></video>
+                <a class="carousel_display" href="junkyard-drive.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="246" height="517" viewBox="0 0 246 517" fill="none">
                     <path
                       d="M134.02 517V272H151.52L174.27 427.75H175.32V272H189.67V517H172.17L149.42 361.25H148.37V517H134.02Z"
                       fill="#FF3700" style="fill:#FF3700;fill:color(display-p3 1.0000 0.2157 0.0000);fill-opacity:1;" />
@@ -244,12 +248,14 @@
                     <path
                       d="M0.71875 247L0.71875 2L23.8188 2L39.2188 178.75H40.2688L55.3188 2L78.4188 2V247H64.0688V70.25H63.0188L49.3688 247H29.7687L16.1187 70.25H15.0688V247H0.71875Z"
                       fill="#FF3700" style="fill:#FF3700;fill:color(display-p3 1.0000 0.2157 0.0000);fill-opacity:1;" />
-                  </svg></a>
+                  </svg>
+                </a>
               </article>
               <article class="carousel_slide is_active carousel_slide--elba">
-                <video class="carousel_video" src="videos/elba.mp4" loop autoplay muted playsinline></video>
-                <a class="carousel_display" href="junkyard-drive.html"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="209" height="245" viewBox="0 0 209 245" fill="none">
+                <video class="carousel_video" data-clip="elba" src="videos/elba.mp4" loop autoplay muted
+                  playsinline></video>
+                <a class="carousel_display" href="junkyard-drive.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="209" height="245" viewBox="0 0 209 245" fill="none">
                     <path
                       d="M157.008 245L172.408 5.34496e-08L193.408 1.43402e-08L208.808 245H193.758L192.008 211.75H174.158L172.058 245H157.008ZM175.558 186.55H190.258L183.608 68.25H182.558L175.558 186.55Z"
                       fill="#FF3700" style="fill:#FF3700;fill:color(display-p3 1.0000 0.2157 0.0000);fill-opacity:1;" />
@@ -261,16 +267,32 @@
                     <path
                       d="M0.872071 245L0.87207 8.21301e-08L44.9721 0V52.15H15.2221V107.45H36.2221V132.65H15.2221V192.85H47.4221V245H0.872071Z"
                       fill="#FF3700" style="fill:#FF3700;fill:color(display-p3 1.0000 0.2157 0.0000);fill-opacity:1;" />
-                  </svg></a>
+                  </svg>
+                </a>
               </article>
-              <article class="carousel_slide is_active carousel_slide--tonner">
-                <video class="carousel_video" src="videos/tønner.mp4" loop autoplay muted playsinline></video>
+              <article class="carousel_slide is_active">
+                <video class="carousel_video" data-clip="tønner" src="videos/tønner.mp4" loop autoplay muted
+                  playsinline></video>
                 <a class="carousel_display" href="junkyard-drive.html">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" fill="none"
-                    preserveAspectRatio="xMidYMid meet">
-                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#FF3700"
-                      font-family="'Barlow Condensed', 'Inter', sans-serif" font-size="96"
-                      letter-spacing="10">TØNNER</text>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="348" height="283" viewBox="0 0 348 283" fill="none">
+                    <path
+                      d="M297.038 265V20H322.938C339.738 20 347.088 29.45 347.088 51.15V116.25C347.088 133.05 343.238 139.7 332.388 140.4V141.1C343.588 142.5 347.088 149.5 347.088 167V265H332.738V171.55C332.738 160.35 330.988 153.35 321.188 153.35H311.388V265H297.038ZM311.388 128.15H321.538C330.988 128.15 332.738 124.65 332.738 109.95V90.35C332.738 75.65 330.988 72.15 321.538 72.15H311.388V128.15Z"
+                      fill="#FF3700" />
+                    <path
+                      d="M244.059 265V20H288.159V72.15H258.409V127.45H279.409V152.65H258.409V212.85H290.609V265H244.059Z"
+                      fill="#FF3700" />
+                    <path
+                      d="M181.51 265V20H199.01L221.76 175.75H222.811V20H237.161V265H219.66L196.91 109.25H195.861V265H181.51Z"
+                      fill="#FF3700" />
+                    <path
+                      d="M118.962 265V20H136.462L159.212 175.75H160.262V20H174.612V265H157.112L134.362 109.25H133.312V265H118.962Z"
+                      fill="#FF3700" />
+                    <path
+                      d="M87.7488 266.75C67.0988 266.75 63.2488 256.95 63.2488 233.85V51.15C63.2488 27.7 67.0988 18.25 87.7488 18.25C108.399 18.25 111.899 27.7 111.899 51.15V233.85C111.899 256.95 108.399 266.75 87.7488 266.75ZM77.5988 196.4C77.5988 211.1 78.2988 214.6 87.7488 214.6C97.1988 214.6 97.5488 211.1 97.5488 196.4V89.65C97.5488 74.95 97.1988 70.4 87.7488 70.4C78.2988 70.4 77.5988 74.95 77.5988 89.65V196.4Z"
+                      fill="#FF3700" />
+                    <path d="M21.35 265V72.15H0V20H57.05V72.15H35.7V265H21.35Z" fill="#FF3700" />
+                    <path d="M81.2 0H94.2V51H81.2V0Z" fill="#FF3700" />
+                    <path d="M81.2 232H94.2V283H81.2V232Z" fill="#FF3700" />
                   </svg>
                 </a>
               </article>
@@ -298,7 +320,7 @@
 
             </ul>
           </nav>
-          <div class="logo" class="footer-section">
+          <div class="footer-section">
             <a class="footer-logo-link" href="landing-page.html?skipIntro=1">
               <svg class="footer-logo" xmlns="http://www.w3.org/2000/svg" width="150" height="47" viewBox="0 0 150 47"
                 fill="none">
@@ -511,11 +533,35 @@
 
       const focusableSelectors = "a[href], button";
       let lastFocus = null;
+      const TRANSITION_MS = 1200;
+      const hideTimers = new WeakMap();
+
+      const showElement = (element) => {
+        if (!element) return;
+        if (hideTimers.has(element)) {
+          clearTimeout(hideTimers.get(element));
+          hideTimers.delete(element);
+        }
+        element.removeAttribute("hidden");
+        requestAnimationFrame(() => {
+          element.classList.add("is-visible");
+        });
+      };
+
+      const hideElement = (element) => {
+        if (!element) return;
+        element.classList.remove("is-visible");
+        const timer = window.setTimeout(() => {
+          element.setAttribute("hidden", "");
+          hideTimers.delete(element);
+        }, TRANSITION_MS);
+        hideTimers.set(element, timer);
+      };
 
       const openMenu = () => {
         lastFocus = document.activeElement;
-        drawer.removeAttribute("hidden");
-        overlay?.removeAttribute("hidden");
+        showElement(drawer);
+        showElement(overlay);
         document.body.classList.add("landing-menu-open");
         toggle.classList.add("landing-menu-toggle--open");
         toggle.setAttribute("aria-expanded", "true");
@@ -524,8 +570,8 @@
       };
 
       const closeMenu = () => {
-        drawer.setAttribute("hidden", "");
-        overlay?.setAttribute("hidden", "");
+        hideElement(drawer);
+        hideElement(overlay);
         document.body.classList.remove("landing-menu-open");
         toggle.classList.remove("landing-menu-toggle--open");
         toggle.setAttribute("aria-expanded", "false");
@@ -543,6 +589,12 @@
       });
 
       overlay?.addEventListener("click", closeMenu);
+
+      drawer.addEventListener("click", (event) => {
+        if (!isOpen()) return;
+        if (event.target.closest("a")) return;
+        closeMenu();
+      });
 
       window.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && isOpen()) {

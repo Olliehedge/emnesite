@@ -26,7 +26,6 @@
 
   originals.map(cloneSlide).forEach((clone) => track.appendChild(clone));
 
-  let lastScrollTop = viewport.scrollTop;
   let activeDisplaySlide = null;
 
   let slideSpan = 0;
@@ -172,8 +171,6 @@
 
     scheduleUpdate();
     if (jumped) scheduleUpdate();
-
-    lastScrollTop = viewport.scrollTop;
   };
 
   const handleResize = () => {
@@ -190,7 +187,6 @@
     attachVideoListeners();
     jumpToMiddle();
     updateVisualState();
-    lastScrollTop = viewport.scrollTop;
   };
 
   if (document.readyState === "complete") {
