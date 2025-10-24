@@ -177,7 +177,7 @@
 
   .landing-header {
     position: fixed;
-    top: calc(env(safe-area-inset-top) + clamp(1rem, 6vw, 1.75rem));
+    top: clamp(1rem, 6vw, 1.75rem);
     left: 50%;
     transform: translateX(-50%);
     width: min(100%, 520px);
@@ -302,7 +302,7 @@
   }
 
   .landing-sheet main {
-    padding-top: calc(env(safe-area-inset-top) + clamp(40px, 8vh, 80px));
+    padding-top: clamp(40px, 8vh, 80px);
     padding-bottom: 0;
   }
 
